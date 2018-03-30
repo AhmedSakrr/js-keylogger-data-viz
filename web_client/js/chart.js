@@ -4,7 +4,7 @@ function drawChart(data) {
 
   var ctx = document.getElementById("myChart");
   var myChart = new Chart(ctx, {
-      type: 'doughnut',
+      type: 'bar',
       data: {
           labels: data.map(value => value.key),
           datasets: [{
@@ -15,6 +15,7 @@ function drawChart(data) {
       },
       options: {
           legend: {
+              display: false,
             position: 'right'
           },
           title: {
