@@ -10,12 +10,23 @@
   </head>
   <body>
     <div class="container">
-      <div class="chart-container" style="position: relative; height:400px; width:400px; margin-left: calc(50% - 200px);">
-        <canvas id="myChart" width="400px" height="400px"></canvas>
+      <div class="chart-container" style="position: relative; height:400px; width:500px; float: left;">
+        <canvas id="myChart" width="500px" height="400px"></canvas>
       </div>
+      <div class="chart-container" style="position: relative; height:400px; width:500px; float: right;">
+        <canvas id="myChart2" width="500px" height="400px"></canvas>
+      </div>
+      <div style="clear: both;"></div>
+      <div class="chart-container" style="position: relative; height:350px; width:500px; float: left;">
+        <canvas id="myChart3" width="500px" height="350px"></canvas>
+      </div>
+      <div class="chart-container" style="position: relative; height:400px; width:500px; float: right;">
+        <canvas id="myChart4" width="500px" height="400px"></canvas>
+      </div>
+      <div style="clear: both;"></div>
       <p>Total Keys Pressed: {{totalKeys}}</p>
-      <p>Keydown Time: {{totalTime/1000}} seconds</p>
-      <p>Server Uptime: {{runtime/1000}} seconds</p>
+      <p>Keydown Time: {{totalTime/1000}} seconds ({{(totalTime/1000/60).toFixed(4)}} minutes)</p>
+      <p>Server Uptime: {{runtime/1000}} seconds ({{(runtime/1000/3600).toFixed(4)}} hours)</p>
       <p>Key Usage Duty Cycle: {{((totalTime/1000)/runtime)*1000*1000}} millionths of a %</p>
       <p>Avg Time Down Per Key: {{totalTime/totalKeys}} ms</p>
       <ul class="collection">

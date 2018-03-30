@@ -523,5 +523,23 @@ fetch('http://localhost:3000')
       }
     }
 
-    drawChart(app.keys.slice(0,9))
+    let mostTaps = app.keys.slice()
+    mostTaps.sort(function(a, b) {
+      return b.taps - a.taps;
+    });
+
+    let mostHolds = app.keys.slice()
+    mostHolds.sort(function(a, b) {
+      return b.holds - a.holds;
+    });
+
+    /*let avgTime = app.keys.slice()
+    avgTime.sort(function(a, b) {
+      return (b.duration/b.count) - (a.duration/a.count);
+    });*/
+
+    drawChart(app.keys.slice(0,10))
+    drawChart2(app.keys.slice(0,10), mostTaps.slice(0,10))
+    drawChart3(app.keys.slice(0,10))
+    drawChart4(app.keys.slice(0,10), mostHolds.slice(0,10))
   });
