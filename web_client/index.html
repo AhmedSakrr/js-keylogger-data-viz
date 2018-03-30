@@ -16,7 +16,7 @@
       <p>Total Keys Pressed: {{totalKeys}}</p>
       <p>Keydown Time: {{totalTime/1000}} seconds</p>
       <p>Server Uptime: {{runtime/1000}} seconds</p>
-      <p>Key Usage Duty Cycle: {{((totalTime/1000)/runtime)*1000}} thousandths of a %</p>
+      <p>Key Usage Duty Cycle: {{((totalTime/1000)/runtime)*1000*1000}} millionths of a %</p>
       <p>Avg Time Down Per Key: {{totalTime/totalKeys}} ms</p>
       <ul class="collection">
         <li v-for="key in keys" class="collection-item">
