@@ -10,8 +10,14 @@ function drawChart(data) {
           datasets: [{
               label: 'Characater Count Occurance',
               data: data.map(value => value.count),
+              yAxisID: 'A',
               backgroundColor: ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a']
-          }]
+          },{
+            label: 'Average Hold Duration (ms)',
+            data: data.map(value => value.duration/value.count),
+            yAxisID: 'B',
+            backgroundColor: '#eee'
+        }]
       },
       options: {
           legend: {
@@ -20,13 +26,36 @@ function drawChart(data) {
           },
           title: {
             display: true,
-            text: 'Top 10 Keys by Count'
+            text: 'Top 10 Keys by Count (with avg hold duration)'
           },
           scales: {
             yAxes: [{
+                scaleLabel: {
+                    labelString: 'Key Presses',
+                    display: true
+                },
+                
                 ticks: {
                     beginAtZero: true
-                }
+                },
+                id: 'A',
+                type: 'linear',
+                position: 'left',
+            }, {
+                
+                scaleLabel: {
+                    labelString: 'Avg. Hold Duration (ms)',
+                    display: true
+                },
+                gridLines: {
+                    display: false
+                },
+            id: 'B',
+            type: 'linear',
+            position: 'right',
+            ticks: {
+                beginAtZero: true
+            }
             }]
         }
       }
@@ -72,6 +101,10 @@ function drawChart2(ref, data) {
             },
             scales: {
                 yAxes: [{
+                    scaleLabel: {
+                        labelString: '# of Short Taps (<60ms)',
+                        display: true
+                    },
                     ticks: {
                         beginAtZero: true
                     }

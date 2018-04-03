@@ -486,6 +486,7 @@ let app = new Vue({
   el: '.container',
   data: {
     keys: [],
+    recent: [],
     totalKeys: 0,
     totalTime: 0,
     runtime: 0
@@ -533,6 +534,11 @@ fetch('http://localhost:3000')
       return b.holds - a.holds;
     });
 
+    app.recent = app.keys.slice()
+    app.recent.sort(function(a, b) {
+      return b.time - a.time;
+    });
+
     /*let avgTime = app.keys.slice()
     avgTime.sort(function(a, b) {
       return (b.duration/b.count) - (a.duration/a.count);
@@ -540,6 +546,6 @@ fetch('http://localhost:3000')
 
     drawChart(app.keys.slice(0,10))
     drawChart2(app.keys.slice(0,10), mostTaps.slice(0,10))
-    drawChart3(app.keys.slice(0,10))
-    drawChart4(app.keys.slice(0,10), mostHolds.slice(0,10))
+    //drawChart3(app.keys.slice(0,10))
+    //drawChart4(app.keys.slice(0,10), mostHolds.slice(0,10))
   });

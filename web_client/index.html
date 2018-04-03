@@ -10,30 +10,64 @@
   </head>
   <body>
     <div class="container">
-      <div class="chart-container" style="position: relative; height:400px; width:500px; float: left;">
-        <canvas id="myChart" width="500px" height="400px"></canvas>
+      <h5 style="text-align: center;">Local Keyboard Logger Analytics &amp; Visualizations</h5>
+      <div class="chart-container" style="position: relative; height:400px; width:550px; float: left;">
+        <canvas id="myChart" width="550px" height="400px"></canvas>
       </div>
-      <div class="chart-container" style="position: relative; height:400px; width:500px; float: right;">
-        <canvas id="myChart2" width="500px" height="400px"></canvas>
+      <div class="chart-container" style="position: relative; height:400px; width:550px; float: right;">
+        <canvas id="myChart2" width="550px" height="400px"></canvas>
       </div>
       <div style="clear: both;"></div>
-      <div class="chart-container" style="position: relative; height:350px; width:500px; float: left;">
+      <!--<div class="chart-container" style="position: relative; height:350px; width:500px; float: left;">
         <canvas id="myChart3" width="500px" height="350px"></canvas>
       </div>
       <div class="chart-container" style="position: relative; height:400px; width:500px; float: right;">
         <canvas id="myChart4" width="500px" height="400px"></canvas>
       </div>
-      <div style="clear: both;"></div>
-      <p>Total Keys Pressed: {{totalKeys}}</p>
+      <div style="clear: both;"></div>-->
+      <div class="row" style="margin-left: 100px;">
+        <div class="col s2"><span>{{totalKeys}}</span><br>total keys pressed</div>
+        <div class="col s2"><span>{{(totalTime/1000/60).toFixed(2)}}</span><br>keydown time (min)</div>
+        <div class="col s2"><span>{{(runtime/1000/3600).toFixed(2)}}</span><br>uptime (hours)</div>
+        <div class="col s2"><span>{{(((totalTime/1000)/runtime)*1000*1000).toFixed(2)}}</span><br>key usage duty cycle (millionths of a %)</div>
+        <div class="col s2"><span>{{(totalTime/totalKeys).toFixed(2)}}</span><br>avg. time down per key (ms)</div>
+      </div>
+      <!--<p>Total Keys Pressed: {{totalKeys}}</p>
       <p>Keydown Time: {{totalTime/1000}} seconds ({{(totalTime/1000/60).toFixed(4)}} minutes)</p>
       <p>Server Uptime: {{runtime/1000}} seconds ({{(runtime/1000/3600).toFixed(4)}} hours)</p>
       <p>Key Usage Duty Cycle: {{((totalTime/1000)/runtime)*1000*1000}} millionths of a %</p>
-      <p>Avg Time Down Per Key: {{totalTime/totalKeys}} ms</p>
-      <ul class="collection">
+      <p>Avg Time Down Per Key: {{totalTime/totalKeys}} ms</p>-->
+      <!--<ul class="collection">
         <li v-for="key in keys" class="collection-item">
           {{ key.key }} - {{ key.count}} - {{key.taps}}/{{key.holds}} - {{ key.duration}} - {{ key.duration / key.count }} - {{ new Date(key.time).toString() }}
         </li>
-      </ul>
+      </ul>-->
+      <h6 style="text-align: center;">Recent Keys</h6>
+      <table class="striped">
+        <thead>
+          <tr>
+              <th>Key/Character</th>
+              <th>Presses</th>
+              <th>Taps (press &lt;60ms)</th>
+              <th>Holds (press &gt;240ms)</th>
+              <th>Total Press Duration (ms)</th>
+              <th>Avg. Press Duration (ms)</th>
+              <th>Last Pressed</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr v-for="key in recent">
+            <td>{{ key.key }}</td>
+            <td>{{ key.count }}</td>
+            <td>{{ key.taps }}</td>
+            <td>{{ key.holds }}</td>
+            <td>{{ key.duration }}</td>
+            <td>{{ key.duration / key.count }}</td>
+            <td>{{ new Date(key.time).toString() }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

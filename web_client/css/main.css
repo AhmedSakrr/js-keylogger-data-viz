@@ -6,3 +6,19 @@ p {
   text-align: center;
   font-style: italic;
 }
+
+.col {
+  height: 200px;
+  background: #36acec;
+  margin: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.col span {
+  font-size: 48px;
+  margin-top: 50px;
+  display: inline-block;
+}
