@@ -8,17 +8,18 @@ p {
 }
 
 .col {
-  height: 200px;
+  height: 180px;
   background: #36acec;
   margin: 20px;
   box-sizing: border-box;
   color: #fff;
   text-align: center;
   font-size: 14px;
+  border-radius: 500px;
 }
 
 .col span {
   font-size: 48px;
-  margin-top: 50px;
+  margin-top: 30px;
   display: inline-block;
 }

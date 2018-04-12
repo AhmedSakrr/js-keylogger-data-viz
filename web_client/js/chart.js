@@ -12,12 +12,12 @@ function drawChart(data) {
               data: data.map(value => value.count),
               yAxisID: 'A',
               backgroundColor: ['#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a']
-          },{
+          }/*,{
             label: 'Average Hold Duration (ms)',
             data: data.map(value => value.duration/value.count),
             yAxisID: 'B',
             backgroundColor: '#eee'
-        }]
+        }*/]
       },
       options: {
           legend: {
@@ -34,6 +34,9 @@ function drawChart(data) {
                     labelString: 'Key Presses',
                     display: true
                 },
+                gridLines: {
+                    display: false
+                },
                 
                 ticks: {
                     beginAtZero: true
@@ -41,7 +44,7 @@ function drawChart(data) {
                 id: 'A',
                 type: 'linear',
                 position: 'left',
-            }, {
+            }/*, {
                 
                 scaleLabel: {
                     labelString: 'Avg. Hold Duration (ms)',
@@ -56,6 +59,11 @@ function drawChart(data) {
             ticks: {
                 beginAtZero: true
             }
+            }*/],
+            xAxes: [{
+                gridLines: {
+                    display: false
+                }
             }]
         }
       }
@@ -107,6 +115,14 @@ function drawChart2(ref, data) {
                     },
                     ticks: {
                         beginAtZero: true
+                    },
+                    gridLines: {
+                        display: false
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: false
                     }
                 }]
             }
